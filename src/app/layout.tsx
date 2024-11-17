@@ -62,8 +62,8 @@ export default function RootLayout({
           {/* Sidebar */}
           <aside className="w-64 bg-white shadow-md flex flex-col  ">
             <div className="p-4 flex-1">
-              <div className="mb-8 ">
-                <h1 className="text-black">Circula</h1>
+              <div className="mx-auto mt-4 mb-4">
+                <h1 className="text-black text-center">CIRCULA</h1>
               </div>
 
               <nav className="space-y-2">

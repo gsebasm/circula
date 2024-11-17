@@ -43,94 +43,80 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <h1 className="text-2xl font-bold">
-          Hola! <span className="text-red-600">Soy Ceci</span>,{" "}
-          <span className="text-purple-600">tu asistente virtual</span>
+    <div className="flex flex-col h-screen bg-gray-50">
+      {/* Header - Estilo actualizado */}
+      <header className="bg-white px-6 py-6 max-w-3xl mx-auto w-full">
+        <h1 className="text-3xl font-bold">
+          Hola! <span className="text-red-600">Soy Ceci</span>, <span>tu </span>
+          <span className="text-red-600">asistente</span>{" "}
+          <span className="text-purple-600">virtual</span>
         </h1>
-        <p className="text-gray-500 mt-1">
+        <p className="text-gray-400 mt-2">
           ¿Qué necesitas saber acerca de nuestros productos disponibles?
         </p>
       </header>
 
-      {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-6 py-4">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`max-w-[80%] mb-4 ${
-              message.isUser ? "ml-auto" : "mr-auto"
-            }`}
-          >
+      {/* Messages Container - Con borde y esquinas redondeadas */}
+      <div className="flex-1 max-w-3xl mx-auto w-full px-4 overflow-hidden">
+        <div className="bg-white rounded-2xl border border-blue-200 h-full p-6 overflow-y-auto">
+          {messages.map((message) => (
             <div
-              className={`p-3 rounded-lg ${
-                message.isUser
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-100 text-gray-800"
-              }`}
+              key={message.id}
+              className={`flex ${
+                message.isUser ? "justify-end" : "justify-start"
+              } mb-4`}
             >
-              {message.text}
+              <div
+                className={`inline-block px-4 py-3 rounded-2xl ${
+                  message.isUser
+                    ? "bg-white border border-blue-200 text-gray-800"
+                    : "bg-white border border-blue-200 text-gray-800"
+                }`}
+              >
+                {message.text}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
 
-        {isThinking && (
-          <div className="flex items-center space-x-2 text-gray-500 mb-4">
-            <div className="flex items-center space-x-2 bg-gray-100 px-4 py-2 rounded-lg">
-              <div
-                className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"
-                style={{ animationDelay: "0ms" }}
-              />
-              <div
-                className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"
-                style={{ animationDelay: "200ms" }}
-              />
-              <div
-                className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"
-                style={{ animationDelay: "400ms" }}
-              />
+          {isThinking && (
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center space-x-2 bg-purple-100 px-4 py-2 rounded-xl">
+                <span className="text-purple-600">Pensando...</span>
+              </div>
             </div>
-            <span>Pensando...</span>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
-      {/* Input Form */}
-      <form
-        onSubmit={handleSubmit}
-        className="border-t border-gray-200 px-6 py-4 bg-white"
-      >
-        <div className="flex space-x-4">
+      {/* Input Form - Fijo en la parte inferior */}
+      <div className="max-w-3xl mx-auto w-full px-4 py-4 bg-gray-50">
+        <form onSubmit={handleSubmit} className="relative">
           <input
             type="text"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             placeholder="Pregúntame lo que necesites..."
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="w-full px-4 py-4 pr-12 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-transparent bg-white"
           />
           <button
             type="submit"
-            className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex items-center"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-blue-500 hover:text-blue-600"
           >
-            <span>Enviar</span>
             <svg
-              className="w-4 h-4 ml-2"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
+              <path d="M5 12h14m-7-7l7 7-7 7" />
             </svg>
           </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
