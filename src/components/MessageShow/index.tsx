@@ -11,9 +11,18 @@ export default function MessageShow({ message }: MessageShowProps) {
             return <ToolMessage message={message}/>;
         default:
             return (
-                <div className="flex gap-1">
-                    <p>{message.owner}:</p>
-                    <p>{message.content}</p>
+                <div
+                    className={`flex ${message.owner === "user" ? "justify-end" : "justify-start"}`}
+                >
+                    <div
+                        className={`max-w-[80%] rounded-2xl p-4 shadow-sm ${
+                            message.owner === "user"
+                            ? "bg-[#F5F5F5] text-gray-900"
+                            : "bg-gradient-to-r from-[#FF0032] to-[#3800B4] text-white"
+                        }`}
+                    >
+                        {message.content}
+                    </div>
                 </div>
             )
     }

@@ -9,8 +9,9 @@ import { ChatMessage } from "@/utils/types";
 
 const fakeInputs: Record<number, string> = {
     0: "Quiero ponerle mosaicos a mi baño, que es lo que voy a necesitar?",
-    2: "Como se vería el baño finalizado si utilizo los mosaicos azules?",
-    5: "",
+    1: "Quiero ponerle mosaicos a mi baño, que es lo que voy a necesitar?",
+    3: "Como se vería el baño finalizado si utilizo los mosaicos azules?",
+    6: "",
 }
 
 export default function Chat() {
